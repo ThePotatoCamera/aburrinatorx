@@ -2,14 +2,16 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class ContadorController extends GetxController {
-  RxInt contador = initContador().obs;
+  int _contador = initContador();
+
+  int get contador => _contador;
+
+  final box = GetStorage();
 
   void increment() {
-    final box = GetStorage();
-
-    contador++;
+    _contador++;
     box.write('contador', contador);
-    }
+  }
 }
 
 int initContador() {
